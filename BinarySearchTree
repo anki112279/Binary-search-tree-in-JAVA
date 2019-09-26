@@ -1,0 +1,94 @@
+package BinarySearchTree;
+import java.util.AbstractList;
+import java.text.Collator;
+
+
+
+
+public class BinaryTree<E> extends AbstractList<E>  {
+	TreeNode<E> root;
+	int size=0;
+	 public BinaryTree(E e) {
+		 root = new TreeNode<E>(e);
+		 }
+	 
+public boolean add(E e) {
+	TreeNode<E> curr = new TreeNode<E>(null);
+	TreeNode<E> par = new TreeNode<E>(null);
+	TreeNode<E> toadd = new TreeNode<E>(e);
+	curr=root;
+	
+	while(true) {
+		
+		
+		if(compare(e,curr.data)<0) {
+			par=curr;
+			curr=curr.leftchild;
+			
+			if(curr==null) {
+			 toadd=par.leftchild;
+			 return true;
+			}
+		}
+		else {
+			
+			par=curr;
+			curr=curr.rightchild;
+			if(curr==null) {
+				 
+			
+				 toadd=par.rightchild;
+				 break;
+				}
+		}
+	   
+	}
+
+	
+	
+	size++;
+}
+
+public int size() 
+{
+	
+	// TODO: Implement this method
+	return size;
+}
+
+
+	
+
+
+
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	BinaryTree<Integer> mll = new BinaryTree<Integer>(10);
+	
+	mll.add(6);
+	mll.add(7);
+	mll.add(8);
+	
+}
+
+}
+
+class TreeNode<E> 
+{
+	
+	TreeNode<E> leftchild;
+	TreeNode<E> rightchild;
+	E data;
+
+	// TODO: Add any other methods you think are useful here
+	// E.g. you might want to add another constructor
+
+	public TreeNode(E e) 
+	{
+		this.data = e;
+		
+		this.leftchild = null;
+		this.rightchild = null;
+	}
+
+}
